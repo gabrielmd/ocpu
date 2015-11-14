@@ -1,4 +1,3 @@
-library(forecast)
 #' Dframe
 #' 
 #' Returns a data frame as response to the input
@@ -10,12 +9,13 @@ dframe <- function(df = NULL, h = 5, node.id = 1){
                 # return empty object
                 list()
         }
-        
+
         # complete empty values from sequence -- interpolation
         x <- seq(min(df$sequence), max(df$sequence))
         complete.sequence <- approx(as.numeric(df$sequence), df$value, xout = x)$value
         
         # prediction model
+        library(forecast)
         m <- auto.arima(complete.sequence)
         
         data.frame(node = node.id, values = forecast(m, h=h))

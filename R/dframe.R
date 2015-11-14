@@ -1,13 +1,22 @@
+library(forecast)
 #' Dframe
 #' 
 #' Returns a data frame as response to the input
 #' 
 #' @export
 #' @param df information from real world. Required.
-dframe <- function(df = NULL){
+dframe <- function(df = NULL, h = 5, node.id = 1){
         if(is.null(df)){
                 # return empty object
                 list()
         }
-        data.frame(node = 1:4, rnorm(4, 20, 2))
+        
+        # complete empty values from sequence -- interpolation
+        x <- seq(min(df$sequence), max(df$sequence))
+        complete.sequence <- approx(as.numeric(df$sequence), df$value, xout = x)$value
+        
+        # prediction model
+        m <- auto.arima(complete.sequence)
+        
+        data.frame(node = node.id, values = forecast(m, h=h))
 }

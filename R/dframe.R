@@ -12,11 +12,11 @@ dframe <- function(df = NULL, h = 5, node.id = 1){
 
         # complete empty values from sequence -- interpolation
         x <- seq(min(df$sequence), max(df$sequence))
-        complete.sequence <- approx(as.numeric(df$sequence), df$value, xout = x)$value
+        complete.sequence <- approx(as.numeric(df$sequence), df$value, xout = x)$y
         
         # prediction model
         library(forecast)
         m <- auto.arima(complete.sequence)
         
-        data.frame(node = node.id, values = forecast(m, h=h))
+        data.frame(node = node.id, forecast(m, h=h))
 }

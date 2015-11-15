@@ -4,5 +4,6 @@
 #' 
 #' @export
 status <- function(){
+        # return string
         "API working"
 }

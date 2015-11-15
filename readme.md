@@ -11,9 +11,9 @@ In order to develop your own application and customize its functionalities, you 
 
  * Fork this repository
  * Rename it, if needed
-        * If you rename the repository: 
-                * Edit the first line of the file DESCRIPTION with the new repository name
-                * Rename the file ocpu.Rproj to {new_repository_name}.Rproj
+     * If you rename the repository: 
+         * Edit the first line of the file DESCRIPTION with the new repository name
+         * Rename the file ocpu.Rproj to {new_repository_name}.Rproj
 
 Cloud Demo
 ----------
@@ -33,16 +33,16 @@ Tests can use the API making POST requests to the address: https://{your_github_
 
 If the setup was properly made, the response will contain a JSON variable with the string "API working".
 
-Use locally
+Using it locally
 -----------
 
 To run the app in your local R session:
 
-#install app
-library(devtools)
-install_github("gabrielmd/ocpu")
+ * Install app:   
+``library(devtools)``  
+``install_github("gabrielmd/ocpu")``
 
-#load in opencpu
-library(opencpu)
-opencpu$browse("/library/ocpu/www")
+ * Load in opencpu:   
+``library(opencpu)``   
+``opencpu$browse("/library/ocpu/www")``
 
